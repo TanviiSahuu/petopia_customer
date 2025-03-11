@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  customer-service:
+    build: .
+    container_name: customer-service
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DJANGO_SETTINGS_MODULE=prj_ct.settings
+      - DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,[::1]
+    volumes:
+      - .:/app
+    networks:
+      - petopia-network
+
+networks:
+  petopia-network:
+    driver: bridge

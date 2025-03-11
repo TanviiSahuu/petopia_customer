@@ -1,0 +1,8 @@
+Django
+django-snowflake
+djangorestframework
+requests
+snowflake-connector-python
+sortedcontainers
+sqlparse
+django-cors-headers

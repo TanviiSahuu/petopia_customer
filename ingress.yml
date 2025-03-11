@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: petopia-ingress
+  #annotations:
+    #nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: petopia.local
+      http:
+        paths:
+          - path: /orderapp/
+            pathType: Prefix
+            backend:
+              service:
+                name: order-service  # ✅ Matches service name
+                port:
+                  number: 8001      # ✅ Matches service port
+          - path: /customerapp/
+            pathType: Prefix
+            backend:
+              service:
+                name: customer-service
+                port:
+                  number: 8000
+          - path: /productapp/
+            pathType: Prefix
+            backend:
+              service:
+                name: product-service
+                port:
+                  number: 8002
+          #- path: /oadmin/
+            #pathType: Prefix
+            #backend:
+              #service:
+                #name: orderservice
+                #port:
+                  #number: 8000
