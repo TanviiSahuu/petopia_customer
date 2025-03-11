@@ -28,8 +28,10 @@ jobs:
 
       # 🛑 Step 4: Load Kubeconfig (Required for Kubernetes Deployment)
       - name: Configure Kubeconfig
-        run: |
-          echo "${{ secrets.KUBECONFIG }}" | base64 -d > ~/.kube/config
+        run: echo "$KUBECONFIG" | base64 --decode > $HOME/.kube/config
+        shell: bash
+        env:
+          KUBECONFIG: ${{ secrets.KUBECONFIG }}
 
       # 🛑 Step 5: Log in to Docker Hub (Optional: Needed only if pushing images)
       - name: Log in to Docker Hub
