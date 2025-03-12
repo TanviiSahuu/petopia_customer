@@ -55,9 +55,9 @@ jobs:
       # 🛑 Step 6: Build & Push Docker Images for Microservices
       - name: Build & Push Docker Images
         run: |
-          docker build -t tanviisahuu/petopia_product:latest .
+          docker build -t tanviisahuu/petopia_customer:latest .
 
-          docker push tanviisahuu/petopia_product:latest
+          docker push tanviisahuu/petopia_customer:latest
 
       # 🛑 Step 7: Apply Kubernetes Manifests
       # - name: Deploy to Minikube
